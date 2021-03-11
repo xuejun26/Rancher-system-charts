@@ -8,7 +8,7 @@ network:
   poolMemberType: ""
   flannelName: ""
 image:
-  repository: "f5networks/k8s-bigip-ctlr"
+  repository: "cnrancher/k8s-bigip-ctlr"
   tag: "2.2.3"
 insecure: true
 certsConfigmap: ""
