@@ -245,6 +245,11 @@ alertmanager:
     runAsUser: 1000
     runAsNonRoot: true
     fsGroup: 2000
+  clusterAdvertiseAddress: ""
+  additionalPeers: []
+  clusterPeerTimeout: ""
+  clusterGossipInterval: ""
+  clusterPushpullInterval: ""
 
 grafana:
   enabled: false
