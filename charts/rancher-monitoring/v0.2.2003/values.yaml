@@ -290,6 +290,7 @@ grafana:
   readinessProbe: {}
   rancher:
     enabled: false
+  authUser: ""
 
 prometheus:
   enabled: false

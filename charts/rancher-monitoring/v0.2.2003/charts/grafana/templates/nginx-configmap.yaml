@@ -41,6 +41,14 @@ data:
 
         proxy_set_header Host $host;
 
+        {{ if .Values.authUser }}
+        set $user $http_x_rancher_user;
+        if ($http_x_rancher_user = '') {
+          set $user {{ .Values.authUser }}; 
+        }
+        proxy_set_header X-Rancher-User $user;
+        {{ end }}
+        
         location /api/dashboards {
           proxy_pass     http://localhost:3000;
         }
