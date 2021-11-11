@@ -283,6 +283,7 @@ grafana:
     storageClass: ""
     accessMode: "ReadWriteOnce"
     size: 50Gi
+    existingClaim: ""
   ## Already exist ServiceAccount
   ##
   serviceAccountName: ""
