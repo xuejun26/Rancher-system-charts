@@ -55,3 +55,11 @@ configmapReload:
     tag: v0.3.0-rancher3
     pullPolicy: IfNotPresent
   resources: {}
+
+watcher:
+  name: watcher
+  image:
+    repository: cnrancher/watcher
+    tag: v1.0.7-ent
+    pullPolicy: IfNotPresent
+  resources: {} 
