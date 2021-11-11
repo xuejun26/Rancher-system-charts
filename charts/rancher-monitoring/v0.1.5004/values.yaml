@@ -290,6 +290,7 @@ grafana:
   prometheusDatasourceURL: "http://prometheus-operated:9090"
   livenessProbe: {}
   readinessProbe: {}
+  authUser: ""
 
 prometheus:
   enabled: false
