@@ -33,7 +33,7 @@ spec:
 {{ .Values.labels | toYaml | indent 8 }}
 {{- if eq .Release.Namespace "istio-system"}}
         heritage: Tiller
-        release: istio
+        release: cluster-istio
         chart: gateways
 {{- end }}
         service.istio.io/canonical-name: {{ .Values.name }}
