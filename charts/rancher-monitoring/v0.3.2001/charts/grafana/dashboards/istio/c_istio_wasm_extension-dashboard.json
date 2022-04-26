@@ -12,20 +12,33 @@
       }
     ]
   },
-  "description": "-",
   "editable": true,
-  "gnetId": 5508,
+  "gnetId": null,
   "graphTooltip": 0,
+  "id": 24,
   "links": [],
   "panels": [
     {
+      "collapsed": false,
+      "datasource": "RANCHER_MONITORING",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 3,
+      "panels": [],
+      "title": "Wasm VMs",
+      "type": "row"
+    },
+    {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
       "dashes": false,
       "datasource": "RANCHER_MONITORING",
-      "editable": true,
-      "error": false,
+      "description": "",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -34,39 +47,133 @@
       },
       "fill": 1,
       "fillGradient": 0,
-      "grid": {
-        "threshold1Color": "rgba(216, 200, 27, 0.27)",
-        "threshold2Color": "rgba(234, 112, 112, 0.22)"
-      },
       "gridPos": {
-        "h": 7,
+        "h": 8,
         "w": 12,
         "x": 0,
-        "y": 0
+        "y": 1
+      },
+      "hiddenSeries": false,
+      "id": 2,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.1.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "avg(envoy_wasm_vm_null_active)",
+          "interval": "",
+          "legendFormat": "native",
+          "refId": "A"
+        },
+        {
+          "expr": "avg(envoy_wasm_vm_v8_active)",
+          "interval": "",
+          "legendFormat": "v8",
+          "refId": "B"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Active",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "RANCHER_MONITORING",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 1
       },
       "hiddenSeries": false,
       "id": 6,
-      "isNew": false,
       "legend": {
-        "alignAsTable": false,
         "avg": false,
         "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
         "max": false,
         "min": false,
-        "rightSide": false,
         "show": true,
         "total": false,
         "values": false
       },
       "lines": true,
       "linewidth": 1,
-      "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
       "pluginVersion": "7.1.5",
-      "pointradius": 5,
+      "pointradius": 2,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [],
@@ -75,131 +182,24 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum by(instance) (rate(apiserver_request_count{code!~\"2..\"}[5m]))",
-          "format": "time_series",
-          "intervalFactor": 2,
-          "legendFormat": "Error -{{instance}} ",
-          "refId": "A",
-          "step": 60
-        },
-        {
-          "expr": "sum by(instance) (rate(apiserver_request_count[5m]))",
-          "format": "time_series",
-          "intervalFactor": 2,
-          "legendFormat": "Request - {{instance}}",
-          "refId": "B",
-          "step": 60
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "API Server Request Rates",
-      "tooltip": {
-        "msResolution": false,
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "logBase": 1,
-          "show": true
-        },
-        {
-          "format": "short",
-          "logBase": 1,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "RANCHER_MONITORING",
-      "editable": true,
-      "error": false,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "grid": {
-        "threshold1Color": "rgba(216, 200, 27, 0.27)",
-        "threshold2Color": "rgba(234, 112, 112, 0.22)"
-      },
-      "gridPos": {
-        "h": 7,
-        "w": 12,
-        "x": 12,
-        "y": 0
-      },
-      "hiddenSeries": false,
-      "id": 7,
-      "isNew": false,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "percentage": false,
-      "pluginVersion": "7.1.5",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "avg(apiserver_request_duration_seconds_sum / apiserver_request_duration_seconds_count) by (instance)",
-          "format": "time_series",
+          "expr": "avg(envoy_wasm_vm_null_created)",
           "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "",
-          "refId": "A",
-          "step": 30
+          "legendFormat": "native",
+          "refId": "A"
+        },
+        {
+          "expr": "avg(envoy_wasm_vm_v8_created)",
+          "interval": "",
+          "legendFormat": "v8",
+          "refId": "B"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "API Server Request Latency (1.17+)",
+      "title": "Created",
       "tooltip": {
-        "msResolution": false,
         "shared": true,
         "sort": 0,
         "value_type": "individual"
@@ -214,13 +214,19 @@
       },
       "yaxes": [
         {
-          "format": "ns",
+          "format": "short",
+          "label": null,
           "logBase": 1,
+          "max": null,
+          "min": null,
           "show": true
         },
         {
           "format": "short",
+          "label": null,
           "logBase": 1,
+          "max": null,
+          "min": null,
           "show": true
         }
       ],
@@ -228,6 +234,20 @@
         "align": false,
         "alignLevel": null
       }
+    },
+    {
+      "collapsed": false,
+      "datasource": "RANCHER_MONITORING",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 9
+      },
+      "id": 7,
+      "panels": [],
+      "title": "Wasm Module Remote Load",
+      "type": "row"
     },
     {
       "aliasColors": {},
@@ -244,10 +264,10 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 9,
-        "w": 12,
+        "h": 8,
+        "w": 8,
         "x": 0,
-        "y": 7
+        "y": 10
       },
       "hiddenSeries": false,
       "id": 11,
@@ -262,11 +282,13 @@
       },
       "lines": true,
       "linewidth": 1,
-      "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
       "pluginVersion": "7.1.5",
-      "pointradius": 5,
+      "pointradius": 2,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [],
@@ -275,10 +297,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "increase(nginx_ingress_controller_nginx_process_requests_total[2m])",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "Request Rate",
+          "expr": "avg(envoy_wasm_remote_load_cache_entries)",
+          "interval": "",
+          "legendFormat": "entries",
           "refId": "A"
         }
       ],
@@ -286,7 +307,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Nginx Ingress Request Rate",
+      "title": "Cache Entry",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -338,13 +359,13 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 9,
-        "w": 12,
-        "x": 12,
-        "y": 7
+        "h": 8,
+        "w": 8,
+        "x": 8,
+        "y": 10
       },
       "hiddenSeries": false,
-      "id": 9,
+      "id": 8,
       "legend": {
         "avg": false,
         "current": false,
@@ -356,11 +377,13 @@
       },
       "lines": true,
       "linewidth": 1,
-      "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
       "pluginVersion": "7.1.5",
-      "pointradius": 5,
+      "pointradius": 2,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [],
@@ -369,73 +392,29 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(service_depth)",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "Service Depth",
+          "expr": "avg(envoy_wasm_remote_load_cache_hits)",
+          "interval": "",
+          "legendFormat": "hits",
           "refId": "A"
         },
         {
-          "expr": "sum(volumes_depth)",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "Volumes Depth",
+          "expr": "avg(envoy_wasm_remote_load_cache_misses)",
+          "interval": "",
+          "legendFormat": "misses",
           "refId": "B"
         },
         {
-          "expr": "sum(replicationmanager_depth)",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "Replication Manager Depth",
+          "expr": "avg(envoy_wasm_remote_load_cache_negative_hits)",
+          "interval": "",
+          "legendFormat": "negative hits",
           "refId": "C"
-        },
-        {
-          "expr": "sum(statefulset_depth)",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "StatefulSet Depth",
-          "refId": "D"
-        },
-        {
-          "expr": "sum(serviceaccount_depth)",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "Service Account Depth",
-          "refId": "E"
-        },
-        {
-          "expr": "sum(endpoint_depth)",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "Endpoint Depth",
-          "refId": "F"
-        },
-        {
-          "expr": "sum(deployment_depth)",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "Deployment Depth",
-          "refId": "G"
-        },
-        {
-          "expr": "sum(daemonset_depth)",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "DaemonSet Depth",
-          "refId": "H"
-        },
-        {
-          "expr": "sum(replicaset_depth)",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "refId": "I"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Controller Manager Queue Depth",
+      "title": "Cache Visit",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -478,8 +457,6 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "RANCHER_MONITORING",
-      "editable": true,
-      "error": false,
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -488,39 +465,32 @@
       },
       "fill": 1,
       "fillGradient": 0,
-      "grid": {
-        "threshold1Color": "rgba(216, 200, 27, 0.27)",
-        "threshold2Color": "rgba(234, 112, 112, 0.22)"
-      },
       "gridPos": {
-        "h": 7,
-        "w": 12,
-        "x": 0,
-        "y": 16
+        "h": 8,
+        "w": 8,
+        "x": 16,
+        "y": 10
       },
       "hiddenSeries": false,
-      "id": 13,
-      "isNew": false,
+      "id": 10,
       "legend": {
-        "alignAsTable": false,
         "avg": false,
         "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
         "max": false,
         "min": false,
-        "rightSide": false,
         "show": true,
         "total": false,
         "values": false
       },
       "lines": true,
       "linewidth": 1,
-      "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
       "pluginVersion": "7.1.5",
-      "pointradius": 5,
+      "pointradius": 2,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [],
@@ -529,21 +499,24 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "avg(apiserver_request_latencies_sum / apiserver_request_latencies_count) by (instance)",
-          "format": "time_series",
-          "intervalFactor": 2,
-          "legendFormat": "",
-          "refId": "A",
-          "step": 30
+          "expr": "avg(envoy_wasm_remote_load_fetch_failures)",
+          "interval": "",
+          "legendFormat": "failures",
+          "refId": "A"
+        },
+        {
+          "expr": "avg(envoy_wasm_remote_load_fetch_successes)",
+          "interval": "",
+          "legendFormat": "successes",
+          "refId": "B"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "API Server Request Latency (deprecated)",
+      "title": "Remote Fetch",
       "tooltip": {
-        "msResolution": false,
         "shared": true,
         "sort": 0,
         "value_type": "individual"
@@ -558,13 +531,231 @@
       },
       "yaxes": [
         {
-          "format": "ns",
+          "format": "short",
+          "label": null,
           "logBase": 1,
+          "max": null,
+          "min": null,
           "show": true
         },
         {
           "format": "short",
+          "label": null,
           "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "collapsed": false,
+      "datasource": "RANCHER_MONITORING",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 18
+      },
+      "id": 71,
+      "panels": [],
+      "title": "Proxy Resource Usage",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "RANCHER_MONITORING",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 19
+      },
+      "hiddenSeries": false,
+      "id": 72,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.1.5",
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(container_memory_working_set_bytes{container=\"istio-proxy\"})",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "Total (k8s)",
+          "refId": "A",
+          "step": 2
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Memory",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "bytes",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "RANCHER_MONITORING",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 19
+      },
+      "hiddenSeries": false,
+      "id": 73,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.1.5",
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(rate(container_cpu_usage_seconds_total{container=\"istio-proxy\"}[1m]))",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "Total (k8s)",
+          "refId": "A",
+          "step": 2
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "vCPU",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
           "show": true
         }
       ],
@@ -582,12 +773,11 @@
     "list": []
   },
   "time": {
-    "from":"now-5m",
-    "to":"now"
+    "from": "now-5m",
+    "to": "now"
   },
   "timepicker": {
     "refresh_intervals": [
-      "5s",
       "10s",
       "30s",
       "1m",
@@ -597,21 +787,10 @@
       "1h",
       "2h",
       "1d"
-    ],
-    "time_options": [
-      "5m",
-      "15m",
-      "1h",
-      "6h",
-      "12h",
-      "24h",
-      "2d",
-      "7d",
-      "30d"
     ]
   },
-  "timezone": "browser",
-  "title": "Kubernetes Components",
-  "uid": "Ld4acTYmz",
-  "version": 1
+  "timezone": "",
+  "title": "Istio Wasm Extension Dashboard",
+  "uid": "7PAV7ctGz",
+  "version": 4
 }
